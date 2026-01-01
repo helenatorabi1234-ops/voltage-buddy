@@ -25,7 +25,7 @@ const CalculationResult = ({ selectedProducts, onRemoveProduct, onClearAll }: Ca
   if (selectedProducts.length === 0) {
     return (
       <div className="bg-card rounded-2xl p-6 border border-border text-center">
-        <div className="text-6xl mb-4 animate-float">⚡</div>
+        <div className="text-6xl mb-4 animate-lightning">⚡</div>
         <h3 className="text-lg font-semibold text-foreground mb-2">
           محصولی انتخاب نشده
         </h3>
