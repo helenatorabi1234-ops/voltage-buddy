@@ -55,6 +55,11 @@ export default {
           cyan: "hsl(var(--electric-cyan))",
           purple: "hsl(var(--electric-purple))",
         },
+        gold: {
+          DEFAULT: "hsl(var(--gold))",
+          light: "hsl(var(--gold-light))",
+          dark: "hsl(var(--gold-dark))",
+        },
         warning: {
           DEFAULT: "hsl(var(--warning-amber))",
         },

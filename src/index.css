@@ -41,14 +41,20 @@
     --electric-cyan: 185 96% 50%;
     --electric-purple: 270 70% 60%;
     --warning-amber: 45 93% 58%;
+    --gold: 45 93% 47%;
+    --gold-light: 48 96% 53%;
+    --gold-dark: 38 92% 40%;
     
     /* Gradients */
     --gradient-electric: linear-gradient(135deg, hsl(199 89% 48%), hsl(185 96% 50%));
+    --gradient-gold: linear-gradient(135deg, hsl(45 93% 47%), hsl(48 96% 53%));
     --gradient-card: linear-gradient(180deg, hsl(222 47% 12%), hsl(222 47% 8%));
     --gradient-glow: radial-gradient(ellipse at center, hsl(199 89% 48% / 0.15), transparent 70%);
+    --gradient-gold-glow: radial-gradient(ellipse at center, hsl(45 93% 47% / 0.2), transparent 70%);
 
     /* Shadows */
     --shadow-electric: 0 0 30px hsl(199 89% 48% / 0.3);
+    --shadow-gold: 0 0 30px hsl(45 93% 47% / 0.3);
     --shadow-card: 0 10px 40px hsl(222 47% 4% / 0.5);
 
     --sidebar-background: 222 47% 8%;
@@ -108,12 +114,23 @@
     box-shadow: var(--shadow-electric);
   }
 
+  .gold-glow {
+    box-shadow: var(--shadow-gold);
+  }
+
   .card-gradient {
     background: var(--gradient-card);
   }
 
   .text-gradient {
     background: var(--gradient-electric);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gold-gradient {
+    background: var(--gradient-gold);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -139,8 +156,32 @@
     opacity: 0.5;
   }
 
+  .gold-glow-effect {
+    position: relative;
+  }
+
+  .gold-glow-effect::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: var(--gradient-gold);
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+    filter: blur(15px);
+  }
+
+  .gold-glow-effect:hover::before {
+    opacity: 0.4;
+  }
+
   .animate-pulse-glow {
     animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-pulse-gold {
+    animation: pulse-gold 2s ease-in-out infinite;
   }
 
   @keyframes pulse-glow {
@@ -149,6 +190,15 @@
     }
     50% {
       box-shadow: 0 0 40px hsl(199 89% 48% / 0.5);
+    }
+  }
+
+  @keyframes pulse-gold {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(45 93% 47% / 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px hsl(45 93% 47% / 0.5);
     }
   }
 
@@ -163,5 +213,13 @@
 
   .animate-float {
     animation: float 3s ease-in-out infinite;
+  }
+
+  .stat-card {
+    @apply bg-secondary/50 rounded-xl p-4 text-center border border-border/50 transition-all duration-300 hover:border-gold/30;
+  }
+
+  .info-badge {
+    @apply inline-flex items-center gap-1.5 px-2 py-1 rounded-full text-xs font-medium bg-gold/10 text-gold border border-gold/20;
   }
 }
